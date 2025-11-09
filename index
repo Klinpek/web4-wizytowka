@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kewin Iksinski - Automatyk</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* --- RESET & GLOBALNE USTAWIENIA --- */
+        :root {
+            --primary-color: #333;
+            --background-gradient: linear-gradient(135deg, #6dd5ed, #2193b0);
+            --card-background: #ffffff;
+            --shadow-color: rgba(0, 0, 0, 0.1);
+            --accent-color: #2193b0;
+            --white-color: #fff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--background-gradient);
+            color: var(--primary-color);
+            line-height: 1.6;
+        }
+
+        /* --- STRUKTURA I KONTENERY --- */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        main {
+            padding: 40px 0;
+        }
+
+        section {
+            padding: 60px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            font-weight: 600;
+            color: var(--white-color);
+            text-shadow: 1px 1px 2px var(--shadow-color);
+        }
+
+        /* --- HEADER --- */
+        .main-header {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 20px 0;
+            text-align: center;
+            color: var(--white-color);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .main-header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .main-header p {
+            font-size: 1.2rem;
+            font-weight: 300;
+        }
+
+        /* --- KARTY (WSPÓLNY STYL) --- */
+        .card {
+            background: var(--card-background);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 20px var(--shadow-color);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        /* --- SEKCJA "O MNIE" --- */
+        #o-mnie .card {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        #o-mnie p {
+            font-size: 1.1rem;
+            color: #555;
+        }
+
+        /* --- SEKCJA "UMIEJĘTNOŚCI" --- */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .skill-card {
+            background: var(--card-background);
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            box-shadow: 0 5px 15px var(--shadow-color);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .skill-card h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0;
+        }
+
+        /* --- SEKCJA "KONTAKT" (FORMULARZ) --- */
+        #kontakt .card {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #444;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 3px rgba(33, 147, 176, 0.2);
+        }
+
+        .submit-btn {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background: var(--accent-color);
+            color: var(--white-color);
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background: #1d8299;
+            transform: translateY(-2px);
+        }
+
+        /* --- STOPKA --- */
+        .main-footer {
+            text-align: center;
+            padding: 40px 20px;
+            background: rgba(0, 0, 0, 0.1);
+            color: var(--white-color);
+        }
+
+        .social-links a {
+            color: var(--white-color);
+            font-size: 1.8rem;
+            margin: 0 15px;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: #ddd;
+        }
+
+        .main-footer p {
+            margin-top: 20px;
+            font-size: 0.9rem;
+        }
+
+        /* --- MEDIA QUERIES (RESPONSYWNOŚĆ) --- */
+        @media (max-width: 768px) {
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .main-header h1 {
+                font-size: 2rem;
+            }
+
+            .main-header p {
+                font-size: 1rem;
+            }
+
+            section {
+                padding: 40px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="container">
+            <h1>Kewin Iksinski</h1>
+            <p>Automatyk / Uruchomienia</p>
+        </div>
+    </header>
+
+    <main>
+        <section id="o-mnie">
+            <div class="container">
+                <h2 class="section-title">O mnie</h2>
+                <div class="card">
+                    <p>Informatyk kochający elektronikę, ciekawy budowy i zasad działania każdego elementu.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="umiejetnosci">
+            <div class="container">
+                <h2 class="section-title">Umiejętności</h2>
+                <div class="skills-grid">
+                    <div class="skill-card"><h3>Perfekcyjny angielski</h3></div>
+                    <div class="skill-card"><h3>Prawo jazdy kat. B</h3></div>
+                    <div class="skill-card"><h3>Programowanie PLC Siemens</h3></div>
+                    <div class="skill-card"><h3>Programowanie falowników</h3></div>
+                    <div class="skill-card"><h3>Lenze, Siemens, Festo</h3></div>
+                    <div class="skill-card"><h3>Rysowanie schematów szaf sterowania</h3></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="kontakt">
+            <div class="container">
+                <h2 class="section-title">Formularz kontaktowy</h2>
+                <div class="card">
+                    <form action="#" method="POST">
+                        <div class="form-group">
+                            <label for="name">Imię</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Wiadomość</label>
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">Wyślij</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <div class="social-links">
+                <!-- Zastąp '#' linkami do swoich profili -->
+                <a href="#" target="_blank" title="LinkedIn">in</a>
+                <a href="#" target="_blank" title="GitHub">gh</a>
+                <a href="#" target="_blank" title="Twitter">tw</a>
+            </div>
+            <p>&copy; 2024 Kewin Iksinski. Wszelkie prawa zastrzeżone.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
+
+```
+
+<!--
+[PROMPT_SUGGESTION]Dodaj sekcję "Doświadczenie" z osią czasu i opisz w niej dwa ostatnie miejsca pracy.[/PROMPT_SUGGESTION]
+[PROMPT_SUGGESTION]Jak mogę podłączyć ten formularz do usługi, która będzie wysyłać wiadomości na mój email, np. Formspree lub Netlify Forms?[/PROMPT_SUGGESTION]
+->
